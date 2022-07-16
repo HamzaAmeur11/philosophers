@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:43:04 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/13 11:58:35 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/16 17:56:03 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,42 @@
 #include <sys/time.h>
 #include <stdlib.h>
 
-typedef	struct s_philo
+#define FAILDE 1
+#define SUCCESS 0
+
+typedef	struct t_args
 {
 	int	n_philo;
 	int	t_die;
 	int	t_eat;
 	int	t_sleep;
 	int	n_eat;
-}	t_philo;
+}	t_args;
 
+typedef struct t_philo
+{
+	t_args *args;
+	pthread_t th;
+	pthread_mutex_t lock;
+	pthread_mutex_t *forks;
+	int n_eating;
+	int	index;
+	struct t_philo *next;
+	struct t_philo *previous;
+}	t_philo;
 
 
 //________read_arguments_______//
 void args_err(int i);
-int	ft_atoi(char *str);
-int	read_args(t_philo *philos, char **av, int ac);
+long	ft_atoi(char *str);
+int	read_args(t_args **args, char **av, int ac);
+
+//_______doubly_linked_List_____//
+t_philo *new_node(t_philo *node, int index);
+void add_front(t_philo **philos, t_philo *philo);
+void add_back(t_philo **philos, t_philo *philo);
+
+//____________________//
+int inistialize_philos(t_philo**philos, char **av, int ac);
 
 #endif

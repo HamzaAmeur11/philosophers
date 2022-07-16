@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../philo/philo.h"
 
 void *routine()
 {
