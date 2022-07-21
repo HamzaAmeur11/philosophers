@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:43:04 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/21 15:42:02 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/21 23:46:13 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct t_philo
 {
 	t_args *args;
 	pthread_t th;
-	pthread_mutex_t lock;
-	pthread_mutex_t *forks;
+	pthread_mutex_t fork;
+	pthread_mutex_t *next_fork;
 	int n_eating;
 	int	index;
 	struct t_philo *next;
@@ -51,9 +51,10 @@ typedef struct t_philo
 void args_err(int i);
 long	ft_atoi(char *str);
 int	read_args(t_args **args, char **av, int ac);
+long long get_time(void);
 
 //_______doubly_linked_List_____//
-t_philo *new_node(t_philo *node, int index, t_args *args)
+t_philo *new_node(t_philo *node, int index, t_args *args);
 void add_front(t_philo **philos, t_philo *philo);
 void add_back(t_philo **philos, t_philo *philo);
 

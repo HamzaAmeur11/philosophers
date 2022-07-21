@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:52 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/16 17:55:50 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/21 23:44:22 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	read_args(t_args **args, char **av, int ac)
 	(*args)->n_eat = -1;
 	if (ac == 6)
 		(*args)->n_eat = ft_atoi(av[5]);
-	
+	(*args)->time = get_time();
 	return (SUCCESS);
 }

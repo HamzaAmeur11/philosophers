@@ -7,10 +7,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Thu Jul 21 17:06:07 2022
+# Make data base, printed on Thu Jul 21 23:34:57 2022
 
 # Variables
 
@@ -39,7 +37,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdw80033g2/T/vscode-ipc-34cae56e-90ae-4d14-86ad-e97b073a7e30.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdw80033g2/T/vscode-ipc-82940269-05b7-49fe-acf4-37194958957c.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -53,7 +51,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.q5PjHg7syl/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.eIWw6JzgFJ/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -117,7 +115,7 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/hameur/.nvm
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2156
+XPC_SERVICE_NAME = com.microsoft.VSCode.2160
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -145,7 +143,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 45688
+VSCODE_PID = 6530
 # variable set hash-table stats:
 # Load=66/1024=6%, Rehash=0, Collisions=1/87=1%
 
@@ -155,7 +153,7 @@ VSCODE_PID = 45688
 
 # Directories
 
-# . (device 16777226, inode 3247020): 8 files, no impossibilities.
+# . (device 16777225, inode 3247020): 8 files, no impossibilities.
 
 # 8 files, no impossibilities in 1 directories.
 
@@ -229,6 +227,8 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Jul 21 17:06:07 2022
+# Finished Make data base on Thu Jul 21 23:34:57 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+

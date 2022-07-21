@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:25:01 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/21 15:41:46 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/21 23:39:07 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void add_front(t_philo **philos, t_philo *philo)
 	struct t_philo *front;
 	struct t_philo *back;
 
-	if (!(*philos))
+	if ((*philos) == NULL)
 		*philos = philo;
 	else if(!(*philos)->next && !(*philos)->previous)
 	{
@@ -68,7 +68,7 @@ void add_back(t_philo **philos, t_philo *philo)
 	t_philo *front;
 	t_philo *back;
 
-	if (!(*philos))
+	if ((*philos) == NULL)
 		*philos = philo;
 	else if(!(*philos)->next && !(*philos)->previous)
 	{
