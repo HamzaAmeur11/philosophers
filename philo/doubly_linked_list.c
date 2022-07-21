@@ -6,16 +6,17 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:25:01 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/16 14:19:54 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/21 15:41:46 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philo *new_node(t_philo *node, int index)
+t_philo *new_node(t_philo *node, int index, t_args *args)
 {
 	node = (t_philo *)malloc(sizeof(t_philo));
 	node->index = index;
+	node->args = args;
 	node->next = NULL;
 	node->previous = NULL;
 	return (node);

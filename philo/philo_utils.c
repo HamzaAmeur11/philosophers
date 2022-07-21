@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:06:47 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/16 17:54:59 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/21 15:42:14 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int list_philos(t_philo **philos, int n_philos, t_args *args)
 		return (FAILDE);
 	i = n_philos;
 	ptr = NULL;
-	*philos = new_node(*philos, 0);
+	*philos = new_node(*philos, 0, args);//deletelfbesho
 	while (i > 0)
-		add_back(philos, new_node(ptr, i--));
+		add_back(philos, new_node(ptr, i--, args));
 	ptr = (*philos)->next;
 	(*philos)->args = args;
 	while (ptr->index != (*philos)->index)
