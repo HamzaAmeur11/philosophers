@@ -6,33 +6,43 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:27:30 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/22 00:45:40 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/23 16:11:26 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void ft_print(t_philo *th, int x)
+{
+	pthread_mutex_lock(&th->args->print);
+	if (x == 0)
+		printf("%lld Ms : Philosopher %d take a fork\n",\
+			(get_time() - th->args->time)  / 1000, th->index);
+	else if (x == 1)
+		printf("%lld Ms : Philosopher %d is eating %d time\n",\
+			(get_time() - th->args->time) / 1000, th->index, th->n_eating + 1);
+	else if (x == 2)
+		printf("%lld Ms : Philosopher %d is sleeping\n",\
+			(get_time() - th->args->time) / 1000, th->index);
+	else if (x == 3)
+		printf("%lld Ms : Philosopher %d is thinking\n",\
+			(get_time() - th->args->time) / 1000, th->index);
+	pthread_mutex_unlock(&th->args->print);
+}
+
 void set_forks(t_philo *th, int x)
 {
 	if (x == 0)
 	{
-		if (th->index % 2 == 1)
-			pthread_mutex_lock(&th->next->fork);
-		else
-			pthread_mutex_lock(&th->previous->fork);
-		printf("%lld Ms : Philosopher %d take a fork\n",\
-			(get_time() - th->args->time), th->index);
+		pthread_mutex_lock(&th->next->fork);
+		ft_print(th, 0);
 		pthread_mutex_lock(&th->fork);
-		printf("%lld Ms : Philosopher %d take a fork\n",\
-			(get_time() - th->args->time), th->index);
-		usleep(th->args->t_eat);
+		ft_print(th, 0);
+		usleep(th->args->t_eat * 1000);
 	}
 	else
 	{
-		if (th->index % 2 == 1)
-			pthread_mutex_unlock(&th->next->fork);
-		else
-			pthread_mutex_unlock(&th->previous->fork);
+		pthread_mutex_unlock(&th->next->fork);
 		pthread_mutex_unlock(&th->fork);
 	}
 }
@@ -50,14 +60,12 @@ void *routine(void *arg)
 		if (th->n_eating == th->args->n_eat)
 			break ;
 		set_forks(th, 0);
-		printf("%lld Ms : Philosopher %d is eating\n",\
-			(get_time() - th->args->time), th->index);
+		ft_print(th, 1);
 		set_forks(th, 1);
-		printf("%lld Ms : Philosopher %d is sleeping\n",\
-			(get_time() - th->args->time), th->index);
-		usleep(th->args->t_sleep);
-		printf("%lld Ms : Philosopher %d is thinking\n",\
-			(get_time() - th->args->time), th->index);
+		th->time = get_time();
+		ft_print(th, 2);
+		usleep(th->args->t_sleep * 1000);
+		ft_print(th, 3);
 		th->n_eating++;
 	}
 	return(NULL);
@@ -68,6 +76,7 @@ int creat_threads(t_philo **philos)
 	t_philo *ptr;
 	
 	ptr = *philos;
+	pthread_mutex_init(&ptr->args->print, NULL);
 	while (ptr->index < ptr->args->n_philo)
 	{
 		pthread_mutex_init(&ptr->fork, NULL);
@@ -82,5 +91,7 @@ int creat_threads(t_philo **philos)
 			return(FAILDE);
 		ptr = ptr->next;
 	}
+	pthread_mutex_destroy(&ptr->fork);
+	pthread_mutex_destroy(&ptr->args->print);
 	return(SUCCESS);
 }

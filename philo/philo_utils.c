@@ -6,11 +6,25 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:06:47 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/21 23:41:53 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/23 14:55:30 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void free_philos(t_philo *philos)
+{
+	int i = 0;
+	t_philo *ptr = philos;
+
+	free(philos->args);
+	while (i <= philos->args->n_eat)
+	{
+		philos = philos->next;
+		free(ptr);
+		ptr = philos;
+	}
+}
 
 int list_philos(t_philo **philos, int n_philos, t_args *args)
 {
