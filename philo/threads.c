@@ -23,9 +23,9 @@ void set_forks(t_philo *th, int x)
 		printf("%lld Ms : Philosopher %d take a fork\n",\
 			(get_time() - th->args->time), th->index);
 		pthread_mutex_lock(&th->fork);
-		usleep(th->args->t_eat);
-		printf("%lld Ms : Philosopher %d is eating\n",\
+		printf("%lld Ms : Philosopher %d take a fork\n",\
 			(get_time() - th->args->time), th->index);
+		usleep(th->args->t_eat);
 	}
 	else
 	{
@@ -42,17 +42,23 @@ void *routine(void *arg)
 	t_philo *th;
 
 	th = (t_philo *)arg;
+	th->n_eating = 0;
 	if (th->index % 2 == 1)
 		usleep(th->args->t_eat / 2);
 	while(1)
 	{
+		if (th->n_eating == th->args->n_eat)
+			break ;
 		set_forks(th, 0);
+		printf("%lld Ms : Philosopher %d is eating\n",\
+			(get_time() - th->args->time), th->index);
 		set_forks(th, 1);
 		printf("%lld Ms : Philosopher %d is sleeping\n",\
 			(get_time() - th->args->time), th->index);
 		usleep(th->args->t_sleep);
 		printf("%lld Ms : Philosopher %d is thinking\n",\
 			(get_time() - th->args->time), th->index);
+		th->n_eating++;
 	}
 	return(NULL);
 }
@@ -72,7 +78,7 @@ int creat_threads(t_philo **philos)
 	ptr = *philos;
 	while (ptr->index < ptr->args->n_philo)
 	{
-		if (pthread_detach(ptr->th) != 0)
+		if (pthread_join(ptr->th, NULL) != 0)
 			return(FAILDE);
 		ptr = ptr->next;
 	}

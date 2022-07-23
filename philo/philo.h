@@ -36,12 +36,12 @@ typedef	struct t_args
 
 typedef struct t_philo
 {
-	t_args *args;
-	pthread_t th;
+	t_args			*args;
+	pthread_t		th;
 	pthread_mutex_t fork;
 	pthread_mutex_t *next_fork;
-	int n_eating;
-	int	index;
+	int 			n_eating;
+	int				index;
 	struct t_philo *next;
 	struct t_philo *previous;
 }	t_philo;
