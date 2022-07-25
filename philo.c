@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:15:44 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/25 19:54:05 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/25 20:02:17 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_usleep(long long time)
 {
 	long long start = get_time();
 	while (get_time() - start < time);
-		// usleep(50);
 }
 
 int manager(t_philo *philos)
@@ -24,10 +23,8 @@ int manager(t_philo *philos)
 	t_philo *ptr;
 
 	ptr = philos;
-	// ptr->time = get_time();
 	while (1)
 	{
-			//printf("philo NUm : %d | last time eat : %lld\n", ptr->index, (get_time() - ptr->args->time) / 1000);
 		if (get_time() - ptr->time >= ptr->args->t_die * 1000)
 		{
 			printf("%lld Ms : Philosopher %d died | last eat : %lld\n",\
