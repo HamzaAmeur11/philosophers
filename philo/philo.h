@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:43:04 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/23 16:02:55 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/25 15:23:14 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct t_philo
 	int 			n_eating;
 	int				index;
 	long long		time;
+	int				key;
 	struct t_philo *next;
 	struct t_philo *previous;
 }	t_philo;
@@ -63,5 +64,7 @@ void free_philos(t_philo *philos);
 //_________Creat_Philosophers___________//
 int inistialize_philos(t_philo**philos, char **av, int ac);
 int creat_threads(t_philo **philos);
+void ft_print(t_philo *th, int x);
+void	ft_usleep(long long time);
 
 #endif

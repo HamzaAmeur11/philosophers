@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:25:01 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/23 16:07:07 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/25 15:12:30 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,77 +15,29 @@
 t_philo *new_node(t_philo *node, int index, t_args *args)
 {
 	node = (t_philo *)malloc(sizeof(t_philo));
-	node->index = index;
+	node->index = index + 1;
 	node->args = args;
 	node->next = NULL;
-	node->previous = NULL;
 	return (node);
-}
-
-static void incrementation(t_philo **philos)
-{
-	t_philo *first;
-	t_philo *ptr;
-
-	first = *philos;
-	ptr = (*philos)->next;
-	first->index++;
-	while (ptr != first)
-	{
-		ptr->index++;
-		ptr = ptr->next;
-	}
 }
 
 void add_front(t_philo **philos, t_philo *philo)
 {
-	struct t_philo *front;
 	struct t_philo *back;
 
 	if ((*philos) == NULL)
 		*philos = philo;
-	else if(!(*philos)->next && !(*philos)->previous)
+	if((*philos)->next == NULL)
 	{
 		(*philos)->next = philo;
-		(*philos)->previous = philo;
 		philo->next = *philos;
-		philo->previous = *philos;
-	} 
-	else
-	{
-		front = *philos;
-		back = (*philos)->previous;
-		incrementation(philos);
-		back->next = philo;
-		front->previous = philo;
-		philo->next = front;
-		philo->previous = back;	
 	}
-}
-
-void add_back(t_philo **philos, t_philo *philo)
-{
-	t_philo *front;
-	t_philo *back;
-
-	if ((*philos) == NULL)
-		*philos = philo;
-	else if(!(*philos)->next && !(*philos)->previous)
-	{
-		(*philos)->next = philo;
-		(*philos)->previous = philo;
-		philo->next = *philos;
-		philo->previous = *philos;
-		philo->index = 1;
-	} 
 	else
-	{	
-		front = *philos;
-		back = (*philos)->previous;
+	{
+		back = (*philos)->next;
+		while (back->next != *philos)
+			back = back->next;
 		back->next = philo;
-		front->previous = philo;
-		philo->next = front;
-		philo->previous = back;
-		philo->index = back->index + 1;
+		philo->next = (*philos);
 	}
 }
