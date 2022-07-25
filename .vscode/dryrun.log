@@ -1,6 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/hameur/Documents/Cercle_III/philosophers'
-echo "Making Philospphers"
- 
-make: Leaving directory `/Users/hameur/Documents/Cercle_III/philosophers'
- 
