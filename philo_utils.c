@@ -6,30 +6,41 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:06:47 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/23 18:22:22 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/26 00:39:29 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void free_philos(t_philo *philos)
+void	free_philos(t_philo *philos)
 {
-	int i = 0;
-	t_philo *ptr = philos;
+	t_philo	*ptr;
+	int		i;
 
-	free(philos->args);
-	while (i <= philos->args->n_eat)
+	ptr = philos;
+	i = 0;
+	while (1)
 	{
+		if (i == ptr->args->n_philo - 1)
+		{
+			pthread_mutex_destroy(&philos->fork);
+			pthread_mutex_destroy(&philos->args->print);
+			free(ptr->args);
+			free(ptr);
+			return ;
+		}
+		pthread_mutex_destroy(&philos->fork);
 		philos = philos->next;
 		free(ptr);
 		ptr = philos;
+		i++;
 	}
 }
 
-int list_philos(t_philo **philos, int n_philos, t_args *args)
+int	list_philos(t_philo **philos, int n_philos, t_args *args)
 {
-	t_philo *ptr;
-	int i;
+	t_philo	*ptr;
+	int		i;
 
 	if (n_philos < 2)
 		return (FAILDE);
@@ -40,13 +51,12 @@ int list_philos(t_philo **philos, int n_philos, t_args *args)
 	return (SUCCESS);
 }
 
-int inistialize_philos(t_philo**philos, char **av, int ac)
+int	inistialize_philos(t_philo**philos, char **av, int ac)
 {
-	t_args *args;
-	
-	args = NULL;
+	t_args	*args;
 
-	if (read_args(&args, av, ac)!= 0)
+	args = NULL;
+	if (read_args(&args, av, ac) != 0)
 		return (printf("error arguments\n"), FAILDE);
 	if (list_philos(philos, args->n_philo, args) != 0)
 		return (printf("error value of number of philosophers\n"), FAILDE);

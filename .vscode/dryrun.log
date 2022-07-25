@@ -1,6 +1,6 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/hameur/Documents/Cercle_III/philosophers'
+echo "Making Philospphers"
+ 
 make: Leaving directory `/Users/hameur/Documents/Cercle_III/philosophers'
  
-make: *** No targets specified and no makefile found.  Stop.
-

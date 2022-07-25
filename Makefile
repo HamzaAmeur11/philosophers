@@ -6,7 +6,7 @@
 #    By: hameur <hameur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 17:54:54 by hameur            #+#    #+#              #
-#    Updated: 2022/07/17 18:23:05 by hameur           ###   ########.fr        #
+#    Updated: 2022/07/26 00:49:26 by hameur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC := cc
 
 CFLAGS := -Wall -Werror -Wextra
 
-SRC :=	doubly_linked_list.c\
+SRC :=	cerculaire_linked_list.c\
 		philo_utils.c\
 		read_args.c\
 		threads.c\
@@ -32,10 +32,10 @@ all : $(NAME)
 	@echo "Making Philospphers"
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	
 %.o : %.c $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	@rm -rf $(OBJS)

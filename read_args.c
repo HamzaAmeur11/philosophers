@@ -6,23 +6,17 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:52 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/21 23:44:22 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/26 00:40:45 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void args_err(int i)
-{
-	if (i == 1)
-		printf("error f les arguments\n");
-}
-
 long	ft_atoi(char *str)
 {
 	long	resultat;
 	long	signe;
-	int	i;
+	int		i;
 
 	resultat = 0;
 	signe = 1;
@@ -56,11 +50,9 @@ int	check_args(char **av)
 			j++;
 		if (av[i][j] != 0)
 			return (FAILDE);
-
 		j = 0;
 		i++;
 	}
-	
 	return (SUCCESS);
 }
 
@@ -68,7 +60,7 @@ int	read_args(t_args **args, char **av, int ac)
 {
 	if (check_args(av) != 0)
 		return (FAILDE);
-	*args = (t_args*)malloc(sizeof(t_args));
+	*args = (t_args *)malloc(sizeof(t_args));
 	(*args)->n_philo = ft_atoi(av[1]);
 	(*args)->t_die = ft_atoi(av[2]);
 	(*args)->t_eat = ft_atoi(av[3]);

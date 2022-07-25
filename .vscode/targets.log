@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Mon Jul 25 19:29:09 2022
+# Make data base, printed on Tue Jul 26 00:48:04 2022
 
 # Variables
 
@@ -15,6 +16,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# makefile (from `Makefile', line 23)
+SRC := doubly_linked_list.c philo_utils.c read_args.c threads.c philo.c
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -31,12 +34,16 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile
-MAKEFILE_LIST := 
+# makefile (from `Makefile', line 21)
+CFLAGS := -Wall -Werror -Wextra
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 29)
+OBJS := doubly_linked_list.o philo_utils.o read_args.o threads.o philo.o
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdw80033g2/T/vscode-ipc-6a9d10e4-6353-4390-a3fa-a8391352e295.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdw80033g2/T/vscode-ipc-3d6426f1-ee76-40bd-a963-febacce259e4.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -44,13 +51,15 @@ PATH = /Users/hameur/goinfre/homebrew/bin:/Users/hameur/goinfre/.brew/bin:/usr/l
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
+LaunchInstanceID = 54614DE4-87B0-413B-BD73-86EBEECC4946
+# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.YcGtufMeM0/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.mND5RNZsCC/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -85,12 +94,16 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
+# makefile (from `Makefile', line 19)
+CC := cc
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = hameur
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 15)
+NAME := philosophers
 # environment
 LESS = -R
 # automatic
@@ -114,13 +127,15 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/hameur/.nvm
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2180
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18DE2:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # environment
@@ -131,6 +146,10 @@ HOMEBREW_NO_AUTO_UPDATE = 1
 PAGER = less
 # environment
 LC_ALL = C
+# makefile (from `Makefile', line 17)
+HEADER := philo.h
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -142,9 +161,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1229
+VSCODE_PID = 6658
 # variable set hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=1/87=1%
+# Load=75/1024=7%, Rehash=0, Collisions=3/106=3%
 
 # Pattern-specific Variable Values
 
@@ -152,24 +171,82 @@ VSCODE_PID = 1229
 
 # Directories
 
-# . (device 16777225, inode 3247020): 8 files, no impossibilities.
+# . (device 16777225, inode 3491958): 20 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 20 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c philo.h
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-# Not a target:
-all:
-#  Command-line target.
+read_args.o: read_args.c philo.h
 #  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
+#  Implicit/static pattern stem: `read_args'
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+
+# Not a target:
+philo_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-26 00:39:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: philosophers
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := philosophers
+# automatic
+# | := 
+# automatic
+# < := philosophers
+# automatic
+# ^ := philosophers
+# automatic
+# ? := philosophers
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/10=10%
+#  commands to execute (from `Makefile', line 32):
+	@echo "Making Philospphers"
+	
+
+philo.o: philo.c philo.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `philo'
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 
 # Not a target:
 .SUFFIXES:
@@ -179,23 +256,63 @@ all:
 
 # Not a target:
 Makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-07-26 00:47:58
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
+read_args.c:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-07-26 00:40:45
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+philo.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-26 00:37:34
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	@rm -rf $(NAME)
+	@echo "Removing Philosophers"
+	
+
+threads.o: threads.c philo.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `threads'
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+
+doubly_linked_list.o: doubly_linked_list.c philo.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `doubly_linked_list'
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 
 # Not a target:
 .DEFAULT:
@@ -204,30 +321,83 @@ makefile:
 #  File has not been updated.
 
 # Not a target:
-GNUmakefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
+philo.h:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-07-26 00:45:23
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+philosophers: doubly_linked_list.o philo_utils.o read_args.o threads.o philo.o
+ 
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 35):
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 41):
+	@rm -rf $(OBJS)
+	@echo "Removing objects files"
+	
+
+philo_utils.o: philo_utils.c philo.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `philo_utils'
+#  Last modified 2022-07-26 00:45:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 38):
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+
+# Not a target:
+threads.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-26 00:45:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+doubly_linked_list.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-26 00:45:53
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/17=0%
+# Load=19/1024=2%, Rehash=0, Collisions=5/67=7%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
 
-# # of strings in strcache: 0
-# # of strcache buffers: 0
-# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
-# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 25 19:29:09 2022
+# Finished Make data base on Tue Jul 26 00:48:04 2022
 
  
-make: *** No rule to make target `all'.  Stop.
-
