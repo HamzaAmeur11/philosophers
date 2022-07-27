@@ -61,6 +61,8 @@ int	read_args(t_args **args, char **av, int ac)
 	if (check_args(av) != 0)
 		return (FAILDE);
 	*args = (t_args *)malloc(sizeof(t_args));
+	if (!args)
+		return (free(args), FAILDE);
 	(*args)->n_philo = ft_atoi(av[1]);
 	(*args)->t_die = ft_atoi(av[2]);
 	(*args)->t_eat = ft_atoi(av[3]);

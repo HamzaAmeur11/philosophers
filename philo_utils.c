@@ -56,9 +56,10 @@ int	inistialize_philos(t_philo**philos, char **av, int ac)
 	t_args	*args;
 
 	args = NULL;
-	if (read_args(&args, av, ac) != 0)
+	if (read_args(&args, av, ac) != SUCCESS)
 		return (printf("error arguments\n"), FAILDE);
-	if (list_philos(philos, args->n_philo, args) != 0)
-		return (printf("error value of number of philosophers\n"), FAILDE);
+	if (list_philos(philos, args->n_philo, args) != SUCCESS)
+		return (printf("error value of number of philosophers\n") \
+			,free_philos(*philos), FAILDE);
 	return (SUCCESS);
 }

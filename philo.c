@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 		return (printf("error args\n"), FAILDE);
 	philos = NULL;
 	if (inistialize_philos(&philos, av, ac) != SUCCESS)
-		return (free_philos(philos), FAILDE);
+		return (FAILDE);
 	if (creat_threads(&philos) != SUCCESS)
 		return (free_philos(philos), FAILDE);
 	ft_usleep((philos->args->t_die / 2) * 1000);
