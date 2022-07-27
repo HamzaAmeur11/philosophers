@@ -41,6 +41,7 @@ int	manager(t_philo *philos)
 			break ;
 		ptr = ptr->next;
 	}
+	usleep(ptr->args->t_die * 1000);
 	return (SUCCESS);
 }
 
@@ -62,9 +63,9 @@ int	main(int ac, char **av)
 	if (inistialize_philos(&philos, av, ac) != SUCCESS)
 		return (FAILDE);
 	if (creat_threads(&philos) != SUCCESS)
-		return (free_philos(philos), FAILDE);
+		return (free_philos(philos, 1), FAILDE);
 	ft_usleep((philos->args->t_die / 2) * 1000);
 	if (manager(philos) != SUCCESS)
-		return (free_philos(philos), FAILDE);
+		return (free_philos(philos, 1), FAILDE);
 	return (SUCCESS);
 }

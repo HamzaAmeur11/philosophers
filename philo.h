@@ -56,8 +56,8 @@ long long	get_time(void);
 /*_______doubly_linked_List_____*/
 t_philo		*new_node(t_philo *node, int index, t_args *args);
 void		add_front(t_philo **philos, t_philo *philo);
-void		add_back(t_philo **philos, t_philo *philo);
-void		free_philos(t_philo *philos);
+void		free_philos(t_philo *philos, int x);
+void		destroy_mutex(t_philo *philos);
 
 /*_________Creat_Philosophers___________*/
 int			inistialize_philos(t_philo**philos, char **av, int ac);

@@ -14,19 +14,16 @@
 
 void	ft_print(t_philo *th, int x)
 {
+	pthread_mutex_lock(&th->args->print);
 	if (x == -1)
 	{
 		printf("%lld Ms : Philosopher %d died\n", \
 				(get_time() - th->args->time) / 1000, th->index);
 		return ;
 	}
-	pthread_mutex_lock(&th->args->print);
 	if (x == 0)
 		printf("%lld Ms : Philosopher %d take a fork dyal %d \n", \
 			(get_time() - th->args->time) / 1000, th->index, th->index);
-	else if (x == 10)
-		printf("%lld Ms : Philosopher %d take a fork dyal %d \n", \
-			(get_time() - th->args->time) / 1000, th->index, th->next->index);
 	else if (x == 1)
 		printf("%lld Ms : Philosopher %d is eating %d time \n", \
 			(get_time() - th->args->time) / 1000, th->index, th->n_eating + 1);
@@ -44,7 +41,7 @@ void	set_forks(t_philo *th, int x)
 	if (x == 0)
 	{
 		pthread_mutex_lock(&th->next->fork);
-		ft_print(th, 10);
+		ft_print(th, 0);
 		pthread_mutex_lock(&th->fork);
 		ft_print(th, 0);
 		ft_print(th, 1);

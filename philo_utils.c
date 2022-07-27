@@ -12,24 +12,38 @@
 
 #include "philo.h"
 
-void	free_philos(t_philo *philos)
+void	destroy_mutex(t_philo *philos)
+{
+	t_philo *ptr;
+
+	ptr = philos;
+	while (ptr->index != ptr->args->n_philo)
+	{
+		pthread_mutex_destroy(&ptr->fork);
+		ptr = ptr->next;
+	}
+	pthread_mutex_destroy(&ptr->fork);
+	pthread_mutex_destroy(&philos->args->print);
+
+}
+
+void	free_philos(t_philo *philos, int x)
 {
 	t_philo	*ptr;
 	int		i;
 
 	ptr = philos;
 	i = 0;
+	if (x == 1)
+		destroy_mutex(philos);
 	while (1)
 	{
 		if (i == ptr->args->n_philo - 1)
 		{
-			pthread_mutex_destroy(&philos->fork);
-			pthread_mutex_destroy(&philos->args->print);
 			free(ptr->args);
 			free(ptr);
 			return ;
 		}
-		pthread_mutex_destroy(&philos->fork);
 		philos = philos->next;
 		free(ptr);
 		ptr = philos;
@@ -60,6 +74,6 @@ int	inistialize_philos(t_philo**philos, char **av, int ac)
 		return (printf("error arguments\n"), FAILDE);
 	if (list_philos(philos, args->n_philo, args) != SUCCESS)
 		return (printf("error value of number of philosophers\n") \
-			,free_philos(*philos), FAILDE);
+			,free_philos(*philos, 0), FAILDE);
 	return (SUCCESS);
 }
