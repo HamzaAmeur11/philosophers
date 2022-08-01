@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:27:30 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/26 00:45:01 by hameur           ###   ########.fr       */
+/*   Updated: 2022/07/29 15:09:56 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_print(t_philo *th, int x)
 		return ;
 	}
 	if (x == 0)
-		printf("%lld Ms : Philosopher %d take a fork dyal %d \n", \
-			(get_time() - th->args->time) / 1000, th->index, th->index);
+		printf("%lld Ms : Philosopher %d take a fork\n", \
+			(get_time() - th->args->time) / 1000, th->index);
 	else if (x == 1)
 		printf("%lld Ms : Philosopher %d is eating %d time \n", \
 			(get_time() - th->args->time) / 1000, th->index, th->n_eating + 1);

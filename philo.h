@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:43:04 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/26 00:48:28 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/01 13:20:51 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,21 @@ typedef struct t_philo
 void		args_err(int i);
 long		ft_atoi(char *str);
 int			read_args(t_args **args, char **av, int ac);
-long long	get_time(void);
 
 /*_______doubly_linked_List_____*/
 t_philo		*new_node(t_philo *node, int index, t_args *args);
 void		add_front(t_philo **philos, t_philo *philo);
 void		free_philos(t_philo *philos, int x);
-void		destroy_mutex(t_philo *philos);
 
 /*_________Creat_Philosophers___________*/
 int			inistialize_philos(t_philo**philos, char **av, int ac);
 int			creat_threads(t_philo **philos);
-void		ft_print(t_philo *th, int x);
+
+/*___________OTHER_____________*/
+long long	get_time(void);
+int			manager(t_philo *philos);
+void		destroy_mutex(t_philo *philos);
 void		ft_usleep(long long time);
+void		ft_print(t_philo *th, int x);
 
 #endif

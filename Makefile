@@ -6,7 +6,7 @@
 #    By: hameur <hameur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 17:54:54 by hameur            #+#    #+#              #
-#    Updated: 2022/07/26 00:49:26 by hameur           ###   ########.fr        #
+#    Updated: 2022/07/28 14:01:11 by hameur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME := philosophers
 
 HEADER := philo.h
 
-CC := cc
+CC := gcc
 
 CFLAGS := -Wall -Werror -Wextra
 
