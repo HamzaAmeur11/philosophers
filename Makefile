@@ -6,7 +6,7 @@
 #    By: hameur <hameur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/17 17:54:54 by hameur            #+#    #+#              #
-#    Updated: 2022/07/28 14:01:11 by hameur           ###   ########.fr        #
+#    Updated: 2022/08/01 16:02:50 by hameur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all : $(NAME)
 	@echo "Making Philospphers"
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME) -g
 	
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@

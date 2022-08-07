@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:43:04 by hameur            #+#    #+#             */
-/*   Updated: 2022/08/01 13:20:51 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/05 20:34:22 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <sys/time.h>
 # include <stdlib.h>
 
-# define FAILDE 1
 # define SUCCESS 0
+# define FAILDE 1
 
 typedef struct t_args
 {
@@ -48,7 +48,6 @@ typedef struct t_philo
 }	t_philo;
 
 /*________read_arguments_______*/
-void		args_err(int i);
 long		ft_atoi(char *str);
 int			read_args(t_args **args, char **av, int ac);
 

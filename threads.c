@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:27:30 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/29 15:09:56 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/03 16:00:11 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_print(t_philo *th, int x)
 		printf("%lld Ms : Philosopher %d take a fork\n", \
 			(get_time() - th->args->time) / 1000, th->index);
 	else if (x == 1)
-		printf("%lld Ms : Philosopher %d is eating %d time \n", \
-			(get_time() - th->args->time) / 1000, th->index, th->n_eating + 1);
+		printf("%lld Ms : Philosopher %d is eating\n", \
+			(get_time() - th->args->time) / 1000, th->index);
 	else if (x == 2)
 		printf("%lld Ms : Philosopher %d is sleeping \n", \
 			(get_time() - th->args->time) / 1000, th->index);
@@ -49,7 +49,8 @@ void	set_forks(t_philo *th, int x)
 	}
 	else
 	{
-		pthread_mutex_unlock(&th->next->fork);
+		if (th->next)
+			pthread_mutex_unlock(&th->next->fork);
 		pthread_mutex_unlock(&th->fork);
 	}
 }

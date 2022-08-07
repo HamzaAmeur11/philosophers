@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:25:01 by hameur            #+#    #+#             */
-/*   Updated: 2022/08/01 13:18:48 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/03 11:37:27 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	destroy_mutex(t_philo *philos)
 	ptr = philos;
 	while (ptr->index != ptr->args->n_philo)
 	{
+		usleep(50);
 		pthread_mutex_destroy(&ptr->fork);
 		ptr = ptr->next;
 	}

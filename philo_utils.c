@@ -6,7 +6,7 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:06:47 by hameur            #+#    #+#             */
-/*   Updated: 2022/08/01 13:19:19 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/07 15:19:52 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_usleep(long long time)
 
 	start = get_time();
 	while (get_time() - start < time)
-		usleep(10);
+		usleep(100);
 }
 
 int	manager(t_philo *philos)
@@ -28,6 +28,7 @@ int	manager(t_philo *philos)
 
 	global_key = 0;
 	ptr = philos;
+	ft_usleep((philos->args->t_die / 2) * 1000);
 	while (1)
 	{
 		if (ptr->key == 1)
@@ -58,12 +59,6 @@ int	list_philos(t_philo **philos, int n_philos, t_args *args)
 	t_philo	*ptr;
 	int		i;
 
-	if (n_philos < 1)
-		return (printf("error value of number of philosophers\n") \
-			, FAILDE);
-	if (n_philos == 1)
-		return (printf("%d Ms : Philosopher %d died\n", 0, 1) \
-			, FAILDE);
 	i = 0;
 	ptr = NULL;
 	while (i < n_philos)

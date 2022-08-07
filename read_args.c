@@ -6,35 +6,31 @@
 /*   By: hameur <hameur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:52 by hameur            #+#    #+#             */
-/*   Updated: 2022/07/26 00:40:45 by hameur           ###   ########.fr       */
+/*   Updated: 2022/08/05 20:39:19 by hameur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+int	check_int(t_args *args, int ac)
+{
+	if (args->n_philo < 0 || args->t_die < 0
+		|| args->t_eat < 0 || args->t_sleep < 0
+		|| (args->n_eat < 0 && ac == 6))
+		return (FAILDE);
+	return (SUCCESS);
+}
+
 long	ft_atoi(char *str)
 {
 	long	resultat;
-	long	signe;
 	int		i;
 
 	resultat = 0;
-	signe = 1;
 	i = 0;
-	while (((str[i] >= 9) && (str[i] <= 13)) || (str[i] == ' '))
-		i++;
-	if ((str[i] == '+') || (str[i] == '-'))
-	{
-		if (str[i] == '-')
-			signe = -signe;
-		i++;
-	}
 	while ((str[i] >= '0') && (str[i] <= '9'))
-	{
-		resultat = (resultat * 10) + (str[i] - 48);
-		i++;
-	}
-	return (resultat * signe);
+		resultat = (resultat * 10) + (str[i++] - 48);
+	return (resultat);
 }
 
 int	check_args(char **av)
@@ -71,5 +67,7 @@ int	read_args(t_args **args, char **av, int ac)
 	if (ac == 6)
 		(*args)->n_eat = ft_atoi(av[5]);
 	(*args)->time = get_time();
+	if (check_int(*args, ac) != SUCCESS)
+		return (FAILDE);
 	return (SUCCESS);
 }
